@@ -21,11 +21,11 @@ class ViewController: UIViewController {
 		let cViewController = storyboard.instantiateViewControllerWithIdentifier("C") as! CViewController;
 		
 		
-		var bounds = UIScreen.mainScreen().bounds
+		var bounds = UIScreen.main.bounds
 		var width = bounds.size.width
 		var height = bounds.size.height;
 
-		scrollView!.contentSize = CGSizeMake(3*width, height);
+		scrollView!.contentSize = CGSize(3*width, height);
 		
 		
 		let viewControllers = [aViewController, bViewController, cViewController]
@@ -38,10 +38,10 @@ class ViewController: UIViewController {
 			// participant is the real object contained in the array
 			addChildViewController(viewController);
 			let originX:CGFloat = CGFloat(idx) * width;
-			viewController.view.frame = CGRectMake(originX, 0, width, height);
+			viewController.view.frame = CGRect(originX, 0, width, height);
 			scrollView!.addSubview(viewController.view)
-			viewController.didMoveToParentViewController(self)
-			idx++;
+			viewController.didMove(toParentViewController: self)
+			idx+=1;
 		}
 	}
 
